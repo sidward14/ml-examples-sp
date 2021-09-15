@@ -16,8 +16,8 @@ from torch.utils.data import Dataset, DataLoader
 
 ROOT = '../data/ml'
 ROOT_TEST = '../data/ml/test'
-IMG_DIR_SIGS = 'imgs'
-IMG_DIR_NOISE = 'imgs_noise'
+IMG_DIR_SIGS = 'imgs_pos'
+IMG_DIR_NOISE = 'imgs_neg'
 
 DEVICE = 'cuda:0'
 
@@ -58,7 +58,7 @@ WHICH_OPTIM = 'adam'  # 'sgd'
 USE_SCHED = True
 
 
-class ScratchArcDataset(Dataset):
+class BinaryCNNDataset(Dataset):
     def __init__(self, img_paths, gts):
         self.img_paths = img_paths
         self.gts = gts
