@@ -233,8 +233,8 @@ def main():
     img_paths, gts = get_data(ROOT)
     train_paths, train_gts, valid_paths, valid_gts = train_valid_split(img_paths, gts)
     
-    train_ds = ScratchArcDataset(train_paths, train_gts)
-    valid_ds = ScratchArcDataset(valid_paths, valid_gts)
+    train_ds = BinaryCNNDataset(train_paths, train_gts)
+    valid_ds = BinaryCNNDataset(valid_paths, valid_gts)
 
     train_dl = DataLoader(train_ds, **TRAIN_DL_PARAMS)
     valid_dl = DataLoader(valid_ds, **VALID_DL_PARAMS)
@@ -250,7 +250,7 @@ def main():
     plot_losses(itr_losses, losses)
 
     test_paths, test_gts = get_data(ROOT_TEST)
-    test_ds = ScratchArcDataset(test_paths, test_gts)
+    test_ds = BinaryCNNDataset(test_paths, test_gts)
     test_dl = DataLoader(test_ds, **TEST_DL_PARAMS)
 
     test(model, test_dl)
